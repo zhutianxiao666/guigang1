@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'AgencyFB-Reg';
+    src: url("AGENCYR.TTF");
+}
+@font-face {
+    font-family: 'AgencyFB-Bold';
+    src: url("AGENCYB.TTF");
+}
+
+.hover {
+    cursor: pointer !important;
+}
+
+
+

@@ -1,0 +1,39 @@
+/*
+函数区域
+*/
+htmlFontSize = 1000 / 20
+px2rem(num)
+  num / htmlFontSize rem
+
+/*
+实施区域
+*/
+*
+  padding 0;
+  margin 0
+ul
+  list-style-type none
+  padding 0
+  margin 0
+html,
+body
+  width 100%
+  height 100%
+  font-size px2rem(18)
+.content
+  display grid
+  grid-template-areas 'a b'  'c b'
+  grid-template-columns px2rem(100) px2rem(900)
+  grid-template-rows  px2rem(50) auto
+  width 100%
+  height px2rem(300)
+  .left_top
+    grid-area a
+    background-color #004E93
+  .right
+    grid-area b
+    background-color yellow
+  .left_bottom
+    grid-area c
+    background-color #63a35c
+    border 1px solid beige

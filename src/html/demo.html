@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/xs.css">
+    <script src="../jquery-3.4.1.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+<svg width="1300" height="1000">
+    <rect x="100" y="100" width="100" height="100" fill="yellow"></rect>
+</svg>
+<script>
+
+    function clone(valueOld) {
+        // 如果为数组，则以数组的方式进行赋值
+        let obj = null;
+        if (valueOld instanceof Array) {
+            obj = [];
+            valueOld.forEach(value => {
+
+                if (value instanceof Object) {
+                    obj.push(clone(value))
+                }else {
+                    obj.push(value);
+                }
+            })
+        }else if (valueOld instanceof Object) {
+            obj = {}
+            Object.keys(valueOld).forEach(key => {
+                if (valueOld[key] instanceof Object) {
+                    obj[key] = clone(valueOld[key]);
+                }else {
+                    obj[key] = valueOld[key]
+                }
+            })
+        }else {
+            obj = valueOld
+        }
+        return obj
+    };
+    const rect = document.querySelector('rect')
+    console.log(typeof rect);
+    const b = clone(rect);
+    console.log(b);
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery-3.4.1.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li bx-html="name">4</li>
+    <li>5</li>
+</ul>
+<script>
+    var obj = {
+        ele:document.querySelector('ul'),
+        data: {
+            name:'ztx',
+            age:222
+        },
+        methods: {
+            f1() {
+                console.log('f1');
+            }
+        }
+    };
+
+    function MVVM(obj) {
+        const me = this;
+        this.ele = obj.ele;
+        this._data = {};
+        const data = obj.data;
+        for (let key in data) {
+            this._data[key] = data[key]
+            this.define(me,this._data,key)
+        };
+        // 
+
+    };
+
+    MVVM.prototype.define= function(me,obj,key) {
+
+        Object.defineProperty(me,key,{
+            get() {
+
+                return me._data[key]
+            },
+            set(v){
+                me._data[key] = v;
+            }
+
+        })
+    };
+    var m1 = new MVVM(obj);
+    console.log(m1);
+    console.log(m1.age);
+
+    console.log(document.querySelector('[b-html]').getAttribute('b-html'));
+
+</script>
+</body>
+</html>

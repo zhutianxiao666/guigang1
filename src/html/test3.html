@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" style="font-size: 20px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid orange;
+        }
+        svg {
+            border: 1px solid blue;
+        }
+        div:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>点击</button>
+<svg width="50rem" height="50rem" viewBox="0 0 500 500">
+    <rect x="10" y="10" width="250" height="250" fill="yellow"></rect>
+</svg>
+<script>
+    var list = [5,3,5,77,121,7];
+    function insertSort(arr) {
+        const length = arr.length;
+        for (let i = 1; i < length; i++) {
+            const flag = arr[i];
+            let j = i - 1;
+            for (; j >= 0; j--) {
+                if (arr[j] > flag) {
+                    arr[j + 1] = arr[j];
+                }else {
+                    break
+                }
+            };
+            arr[j + 1] = flag;
+        };
+        return arr;
+    };
+    console.log(insertSort(list));
+</script>
+</body>
+</html>

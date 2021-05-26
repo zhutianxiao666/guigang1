@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.4.1.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<svg width="2000" height="1000" >
+    <foreignObject height="100" width="100" id="demo" style="border: 1px solid black"></foreignObject>
+</svg>
+<script>
+
+    const table = function (obj) {
+        // 获取容器元素
+        // 修改宽高xy
+        obj.$ele.attr({
+            'x':obj.x,
+            'y':obj.y,
+            'width':obj.width,
+            'height':obj.height
+        }).css({
+            'overflow':'auto'
+        });
+        obj.$ele.html('<ul class="centent" style="list-style-type: none;padding: 0;margin: 0"></ul>');
+        // 文本内容渲染为html标签。
+        let list1 = [];
+        const titles = [];
+        obj.titles.forEach((value,index) => {
+            titles.push(`<span style="flex: ${obj.order[index]};">${value}</span>`);
+        });
+        list1.push(titles.join(''));
+        obj.data.forEach((value,index) => {
+            const list2 = [];
+            value.forEach((value1,index1) => {
+                list2.push(`<span style="flex: ${obj.order[index1]};word-break: break-all">${value1}</span>`);
+            });
+            list1.push(list2.join(''));
+        });
+        list1 = list1.map((value, index) => {
+            if (index == 0) {
+                return `<li style="display: flex;align-items: stretch;background-color: #DBEFFF;text-align: center;border-bottom: 1px solid #004E93">${value}</li>`;
+            }else {
+                return `<li style="display: flex;align-items: stretch;background-color: #DBEFFF;text-align: left;border-bottom: 1px solid #004E93">${value}</li>`;
+            };
+        });
+        obj.$ele.find('.centent').html(list1.join(''));
+    };
+    table({
+        x:100,
+        y:100,
+        height: 300,
+        width: 500,
+        data: [
+            [1,2,3],
+            [3,2,1],
+            [4,3,2]
+        ],
+        titles:['a','b','c'],
+        order:[1,1,1],
+        $ele: $('svg #demo')
+    })
+</script>
+</body>
+</html>

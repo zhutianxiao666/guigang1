@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.4.1.js"></script>
+</head>
+<body>
+<script>
+    function MV(data,cds) {
+        this._data = data;
+        this.cds = cds;
+        const me = this;
+        for (let key in data) {
+            Object.defineProperty(this,key,{
+                get() {
+                    return me._data[key];
+                },
+                set(v) {
+                    me._data[key] = v;
+                    me.cds.forEach(cd=> {
+                        cd();
+                    })
+                }
+            })
+        }
+    }
+    MV.prototype.append = function (cd) {
+        this.cds.push(cd);
+    }
+    const obj = {
+        name:'ztx',
+        age:'222'
+    }
+    function f1() {
+        console.log('ok1')
+    }
+    function f2() {
+        console.log('ok2')
+    }
+    const mv1= new MV(obj,[f1,f2]);
+    mv1.name = 'zzz';
+    mv1.append(function () {
+        console.log('ok3')
+    });
+    mv1.age = '11'
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+成本、能源
+左侧方块中的机组号 class为costcode
+中间成本的数值的class为costnum 
+（由于自上而下的顺序颠倒，还需要添加一个data-index进行区分）
+
+生产信息
+光圈
+class="productionOutLine" data-index="1"
+
+
+开停机
+变色的机组图形。
+class="state_Q318"
+机组名称
+id="unit_code_Q318"
+    停机：#9E9E9F 开机#FFFFFF
+机组百分比
+id="ability_Q318"
+    百分比颜色 停机：
+    停机 #888888 开机 #03FFFF
+机组材料号
+id="mat_Q318"
+    停机 #9E9E9F 开机 #2CA6E0
+
+库区库容百分比
+id="stock_Q52"
+
+能源
+ class="energy" data-index="1"

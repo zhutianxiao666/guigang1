@@ -1,0 +1,36 @@
+#content {
+    overflow: auto;
+    border: 1px solid blueviolet;
+    font-family: 微软雅黑;
+    font-size: 1rem;
+}
+#content .main {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+#content .main>li {
+    display: flex;
+    border-bottom: rgb(0, 102, 153) 1px solid;
+}
+#content .main>li:nth-child(odd) {
+    background-color: rgb(239,248,255);
+}
+#content .main .title {
+    text-align: center;
+    position: sticky;
+    top: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color:rgb(218,228,240) !important;
+    color: rgb(3,81,150);
+}
+#content .main>li>span {
+    /*flex: 1;*/
+    padding: 2px 0 2px 5px;
+    word-break: break-all !important;
+}
+#content .main>li>span:not(:first-child) {
+    border-left: rgb(0, 102, 153) 1px solid;
+}
